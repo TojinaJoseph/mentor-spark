@@ -1,14 +1,18 @@
 .button {
-  padding: 10px;
+  padding: 12px;
   cursor: pointer;
   border: none;
+  border-radius: 10px;
 }
 .primary {
-  background-color: blue;
+  background-color: #099268;
 }
-.success {
-  background-color: green;
+.secondary {
+  background-color: #38d9a9;
 }
 .danger {
-  background-color: red;
+  background-color: #e03131;
+}
+.disabled {
+  background-color: #868e96;
 }
