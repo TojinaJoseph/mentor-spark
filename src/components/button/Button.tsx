@@ -4,19 +4,21 @@ export interface ButtonProps {
   label: string;
   onClick: () => void;
   disabled?: boolean;
-  variant?: "primary" | "success" | "danger";
+  variant?: "primary" | "secondary" | "danger";
 }
 
 const Button: React.FC<ButtonProps> = ({
   label = "submit",
   onClick,
-  disabled = false,
-  variant = "primary",
+  disabled = true,
+  variant = "danger",
 }) => {
   return (
     <>
       <button
-        className={`styles.button ${styles[variant]}`}
+        className={`${styles.button} ${styles[variant]} ${
+          disabled ? styles.disabled : undefined
+        }`}
         onClick={onClick}
         disabled={disabled}
       >
