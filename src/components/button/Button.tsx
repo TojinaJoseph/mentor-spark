@@ -10,8 +10,8 @@ export interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   label = "submit",
   onClick,
-  disabled = true,
-  variant = "danger",
+  disabled = false,
+  variant = "primary",
 }) => {
   return (
     <>
