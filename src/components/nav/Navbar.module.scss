@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin: auto;
+  align-items: center;
+  .list {
+    display: flex;
+    // justify-content: space-around;
+    gap: 10px;
+    li {
+      list-style: none;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+  .list a:hover,
+  .list a.active {
+    color: green;
+    text-decoration: underline;
+  }
+}

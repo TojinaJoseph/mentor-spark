@@ -1,6 +1,6 @@
 import type React from "react";
 import { useState } from "react";
-import Styles from "./Input.module.scss";
+import styles from "./Input.module.scss";
 
 export interface InputProps {
   type: string;
@@ -15,7 +15,7 @@ const Input: React.FC<InputProps> = ({ type, label, name, placeholder }) => {
     setValue(e.target.value);
   };
   return (
-    <div className={Styles.inputContainer}>
+    <div className={styles.inputContainer}>
       <label htmlFor="">{label}</label>
       <input
         placeholder={placeholder}
