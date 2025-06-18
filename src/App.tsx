@@ -5,6 +5,9 @@ import Root from "./pages/layout/Root";
 import Login from "./pages/login/Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Profile from "./pages/profile/Profile";
+import MentorsList from "./pages/mentorList/MentorsList";
+import MenteeList from "./pages/menteeList/MenteeList";
+import AdminRoot from "./pages/layout/AdminRoot";
 
 // const routeDefinitions = createRoutesFromElements(<Route>
 //   <Route path="/" element={<Login/>}/>
@@ -15,11 +18,20 @@ import Profile from "./pages/profile/Profile";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    // element: <Root />,
     errorElement: <Error />,
     children: [
-      { path: "", element: <Login /> },
-      { path: "admin", element: <Admin /> },
+      { index: true, element: <Login /> },
+      {
+        path: "admin",
+        element: <AdminRoot />,
+        errorElement: <Error />,
+        children: [
+          { index: true, element: <Admin /> },
+          { path: "mentors", element: <MentorsList /> },
+          { path: "mentees", element: <MenteeList /> },
+        ],
+      },
       { path: "profile/:id", element: <Profile /> },
     ],
   },
