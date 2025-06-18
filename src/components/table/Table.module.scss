@@ -1,0 +1,14 @@
+.tableContainer {
+  margin-top: 50px;
+
+  table {
+    width: 600px;
+    // border: 1px solid black;
+    td {
+      padding: 10px;
+      //   border: 1px solid black;
+      height: 100px;
+      border-bottom: 1px solid black;
+    }
+  }
+}

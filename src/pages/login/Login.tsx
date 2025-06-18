@@ -20,7 +20,7 @@ const Login = () => {
             name="password"
             placeholder="enter password"
           />
-          <Button label="Login" onClick={() => {}} />
+          <Button label="Login" onClick={() => navigate("/admin")} />
           {/* <p>
             Go to <Link to="/admin">Admin page</Link>
           </p>
