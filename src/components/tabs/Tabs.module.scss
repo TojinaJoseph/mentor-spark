@@ -1,0 +1,23 @@
+.tabsContainer {
+  max-width: 100%;
+  .tabList {
+    list-style-type: none;
+    display: flex;
+
+    li {
+      padding: 20px;
+      border: 1px solid #0ca678;
+      cursor: pointer;
+    }
+    li.active {
+      background-color: #63e6be;
+      border: none;
+      border-left: 1px solid #0ca678;
+    }
+  }
+
+  .tabPanel {
+    margin-top: 50px;
+    margin-left: 50px;
+  }
+}
