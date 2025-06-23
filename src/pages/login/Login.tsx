@@ -1,6 +1,6 @@
 import Button from "../../components/button/Button";
 import Input from "../../components/Input/Input";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.scss";
 const Login = () => {
   const navigate = useNavigate();
@@ -13,12 +13,16 @@ const Login = () => {
             label="username"
             name="username"
             placeholder="enter username"
+            value="username"
+            onChange={() => {}}
           />
           <Input
             type="password"
             label="password"
             name="password"
             placeholder="enter password"
+            value="password"
+            onChange={() => {}}
           />
           <Button label="Login" onClick={() => navigate("/admin")} />
           {/* <p>
