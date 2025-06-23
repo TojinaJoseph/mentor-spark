@@ -3,6 +3,6 @@ import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/mentor-spark",
+  base: "/mentor-spark/",
   plugins: [react()],
 });
