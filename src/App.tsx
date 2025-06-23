@@ -8,26 +8,31 @@ import MentorsList from "./pages/mentorList/MentorsList";
 import MenteeList from "./pages/menteeList/MenteeList";
 import AdminRoot from "./pages/layout/AdminRoot";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      errorElement: <Error />,
+      children: [
+        { index: true, element: <Login /> },
+        {
+          path: "admin",
+          element: <AdminRoot />,
+          errorElement: <Error />,
+          children: [
+            { index: true, element: <Admin /> },
+            { path: "mentors", element: <MentorsList /> },
+            { path: "mentees", element: <MenteeList /> },
+          ],
+        },
+        { path: "profile/:id", element: <Profile /> },
+      ],
+    },
+  ],
   {
-    path: "/",
-    errorElement: <Error />,
-    children: [
-      { index: true, element: <Login /> },
-      {
-        path: "admin",
-        element: <AdminRoot />,
-        errorElement: <Error />,
-        children: [
-          { index: true, element: <Admin /> },
-          { path: "mentors", element: <MentorsList /> },
-          { path: "mentees", element: <MenteeList /> },
-        ],
-      },
-      { path: "profile/:id", element: <Profile /> },
-    ],
-  },
-]);
+    basename: "/mentor-spark/",
+  }
+);
 
 function App() {
   return <RouterProvider router={router} />;

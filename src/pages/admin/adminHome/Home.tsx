@@ -31,14 +31,14 @@ const Home = () => {
       <div className={styles.mapSection}>
         <div className={styles.dropdowns}>
           <Dropdown
-            label="mentor"
+            label="mentors"
             placeholder="select a mentor"
             options={mentorsOptions}
             selected={selectedMentorValue}
             onSelect={setSelectedMentorValue}
           />
           <Dropdown
-            label="mentee"
+            label="mentees"
             placeholder="select a mentee"
             options={menteesOptions}
             selected={selectedMenteesValue}
