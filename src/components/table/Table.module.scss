@@ -1,12 +1,16 @@
 .tableContainer {
   margin-top: 50px;
-
   table {
     width: 600px;
-    // border: 1px solid black;
+    thead {
+      background-color: aquamarine;
+      th {
+        text-align: left;
+        padding: 10px;
+      }
+    }
     td {
       padding: 10px;
-      //   border: 1px solid black;
       height: 100px;
       border-bottom: 1px solid black;
     }

@@ -4,7 +4,7 @@
   border: none;
   border-radius: 10px;
   &.primary {
-    background-color: #099268;
+    background-color: #0ca678;
   }
   &.secondary {
     background-color: #38d9a9;
@@ -13,6 +13,7 @@
     background-color: #e03131;
   }
   &.disabled {
-    background-color: #868e96;
+    background-color: #c3fae8;
+    cursor: inherit;
   }
 }

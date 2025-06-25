@@ -1,26 +1,33 @@
+import type { JSX } from "react";
 import styles from "./Table.module.scss";
-interface tableProps {
-  data: {
-    id: number;
-    name: string;
-    designation: string;
-  }[];
+export interface Column<T> {
+  key: keyof T;
+  header: string;
 }
-const Table: React.FC<tableProps> = ({ data }) => {
+interface TableProps<T> {
+  data: T[];
+  columns: Column<T>[];
+}
+const Table = <T extends object>({
+  data,
+  columns,
+}: TableProps<T>): JSX.Element => {
   return (
     <div className={styles.tableContainer}>
       <table>
         <thead>
-          <td>Id</td>
-          <td>Name</td>
-          <td>Designation</td>
+          <tr>
+            {columns.map((col) => (
+              <th key={String(col.key)}>{col.header}</th>
+            ))}
+          </tr>
         </thead>
         <tbody>
-          {data.map((i) => (
-            <tr>
-              <td>{i.id}</td>
-              <td>{i.name}</td>
-              <td>{i.designation}</td>
+          {data.map((row, i) => (
+            <tr key={i}>
+              {columns.map((col) => (
+                <td key={String(col.key)}>{String(row[col.key])}</td>
+              ))}
             </tr>
           ))}
         </tbody>

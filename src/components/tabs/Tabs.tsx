@@ -18,6 +18,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
       <ul className={styles.tabList}>
         {tabs.map((i) => (
           <li
+            key={i.id}
             onClick={() => setIndex(i.id)}
             className={index === i.id ? styles.active : undefined}
           >
@@ -27,7 +28,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
       </ul>
 
       <div className={styles.tabPanel}>
-        <p>{tabs[index].children}</p>
+        <div>{tabs[index].children}</div>
       </div>
     </div>
   );
