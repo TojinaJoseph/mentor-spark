@@ -2,12 +2,20 @@ import Button from "../../components/button/Button";
 import Input from "../../components/Input/Input";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.scss";
+import { useState } from "react";
 
 const Login = () => {
+  const [loginForm, setLoginForm] = useState({ username: "", password: "" });
   const navigate = useNavigate();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate("/admin");
+    console.log(loginForm);
+    navigate("admin");
+  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setLoginForm((prev) => ({ ...prev, [name]: value }));
   };
   return (
     <div className={styles.login}>
@@ -18,16 +26,16 @@ const Login = () => {
             label="username"
             name="username"
             placeholder="enter username"
-            value="username"
-            onChange={() => {}}
+            value={loginForm.username}
+            onChange={handleChange}
           />
           <Input
             type="password"
             label="password"
             name="password"
             placeholder="enter password"
-            value="password"
-            onChange={() => {}}
+            value={loginForm.password}
+            onChange={handleChange}
           />
           <Button label="Login" />
           {/* <p>

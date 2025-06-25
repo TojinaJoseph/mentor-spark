@@ -1,8 +1,13 @@
 import { useState } from "react";
 import Dropdown, { type Option } from "../../../components/dropdown/Dropdown";
-import Table from "../../../components/table/Table";
+import Table, { type Column } from "../../../components/table/Table";
 import styles from "./Home.module.scss";
 import Button from "../../../components/button/Button";
+
+interface User {
+  mentor: string;
+  mentee: string;
+}
 
 const Home = () => {
   const mentorsOptions: Option[] = [
@@ -20,25 +25,37 @@ const Home = () => {
   );
   const [selectedMenteesValue, setSelectedMenteesValue] =
     useState<Option | null>(null);
-  const mentees = [
-    { id: 1, name: "Mentee 1", designation: "Senior software engineer" },
-    { id: 2, name: "Mentee 2", designation: "Senior software engineer" },
-    { id: 3, name: "Mentee 3", designation: "Senior software engineer" },
+  const [map, setMap] = useState<User[]>([]);
+
+  const userColumns: Column<User>[] = [
+    { key: "mentor", header: "Mentor" },
+    { key: "mentee", header: "Mentee" },
   ];
-  console.log(selectedMentorValue);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const newUser: User = {
+      mentor: selectedMentorValue?.name || "",
+      mentee: selectedMenteesValue?.name || "",
+    };
+    setMap((prev) => [...prev, newUser]);
+    setSelectedMenteesValue(null);
+    setSelectedMentorValue(null);
+  };
+
   return (
     <div className={styles.home}>
-      <div className={styles.mapSection}>
+      <form className={styles.mapSection} onSubmit={handleSubmit}>
         <div className={styles.dropdowns}>
           <Dropdown
-            label="mentors"
+            label="mentor"
             placeholder="select a mentor"
             options={mentorsOptions}
             selected={selectedMentorValue}
             onSelect={setSelectedMentorValue}
           />
           <Dropdown
-            label="mentees"
+            label="mentee"
             placeholder="select a mentee"
             options={menteesOptions}
             selected={selectedMenteesValue}
@@ -46,10 +63,13 @@ const Home = () => {
           />
         </div>
         <div className={styles.mapButton}>
-          <Button label="map" />
+          <Button
+            label="map"
+            disabled={!selectedMenteesValue || !selectedMentorValue}
+          />
         </div>
-      </div>
-      <Table data={mentees} />
+      </form>
+      {map.length !== 0 && <Table data={map} columns={userColumns} />}
     </div>
   );
 };
